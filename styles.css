@@ -19,7 +19,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: start;
-    font-size: 35px;
+    font-size: 30px;
     background-color: #240046;
     color: antiquewhite;
     font-family: 'Public Pixel', sans-serif;
@@ -35,13 +35,13 @@ header{
 
 .main-section h2{
     color: #ff6d00;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
 }
 
 .main-section h3{
     color: #ff7900;
-    font-size: 32px;
+    font-size: 28px;
     text-align: center;
 }
 
