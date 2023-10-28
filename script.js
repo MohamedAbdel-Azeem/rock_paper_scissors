@@ -1,14 +1,17 @@
 let win = 0;
 let lose = 0;
 
+
+
 function getComputerChoice(){
     let choices = ["Rock","Paper","Scissors"];
     let index = Number.parseInt(Math.random()*3);
     return choices[index];
 }
 
-function playRound(){
-    let userInput = prompt("Choose Rock, Paper or Scissors").toLowerCase();
+
+function playRound(buttonInput){
+    let userInput = buttonInput.toLowerCase();
     let result = "";
     let computerChoice = getComputerChoice();
     switch (userInput) {
@@ -49,19 +52,26 @@ function playRound(){
     return result;
 }
 
-function Game(){
-    for (let i = 0 ; i < 5 ; i++){
-        console.log(playRound());
-        console.log(`Score: User ${win} - PC ${lose}`);
-    }
-    if (win > lose){
-        console.log("You Won!");
-    } else if (win < lose) {
-        console.log("You Lose!");
-    } else {
-        console.log("Ugh, it's a Tie!");
-    }
+
+
+const buttons = document.querySelectorAll('#buttons');
+buttons.forEach((button) => {
+    button.addEventListener('click', (e)=>{
+        let result = playRound(e.target.id);
+        displayResults(result);
+        displayScore();
+    });
+});
+
+
+
+function displayScore(){
+    let score = `Score: User ${win} - PC ${lose}`;
+    const scoreBoard = document.querySelector('#score');
+    scoreBoard.textContent = score;
 }
 
-
-Game();
+function displayResults(result){
+    const resultBoard = document.querySelector('#winner');
+    resultBoard.textContent = result;
+}
