@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet">
 </head>
 <body>
-    <h1>Play Rock Paper Scissors!</h1>
-    <div id="results">
-        <h2 id="winner"></h2>
-        <h3 id="score"></h3>
-    </div>
-    <div id="buttons">
-        <button id="Rock">Rock</button>
-        <button id="Paper">Paper</button>
-        <button id="Scissors">Scissors</button>
+    <header><h1>Play Rock Paper Scissors!</h1></header>
+    <div class="main-section">
+        <div id="results">
+            <h2 id="winner">Play Now!</h2>
+            <h3 id="score"></h3>
+        </div>
+        <div id="buttons">
+            <img src="./images/Rock.png" id="Rock">
+            <img src="./images/paper.png" id="Paper">
+            <img src="./images/scissors.png" id="Scissors">
+        </div>
+        <div id="end"></div>
     </div>
     <script src="script.js" defer></script>
+    <footer>
+        <a href="https://github.com/MohamedAbdel-Azeem" target="_blank">Visit My Github</a>
+    </footer>
 </body>
 </html>

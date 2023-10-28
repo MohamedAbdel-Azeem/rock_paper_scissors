@@ -1,7 +1,12 @@
 let win = 0;
 let lose = 0;
 
+const resultBoard = document.querySelector('#winner');
+const scoreBoard = document.querySelector('#score');
+const endDiv = document.querySelector('#end');
 
+const winStatment = 'Congrats, You Won!';
+const loseStatment = 'Game Over! PC Won!';
 
 function getComputerChoice(){
     let choices = ["Rock","Paper","Scissors"];
@@ -49,6 +54,10 @@ function playRound(buttonInput){
             }
             break;
     }
+    if (win == 5 || lose == 5){
+        result = 'Play Again?';
+        showGameOver();
+    }
     return result;
 }
 
@@ -57,9 +66,8 @@ function playRound(buttonInput){
 const buttons = document.querySelectorAll('#buttons');
 buttons.forEach((button) => {
     button.addEventListener('click', (e)=>{
-        let result = playRound(e.target.id);
-        displayResults(result);
-        displayScore();
+        console.log(e.target.id);
+        Game(e.target.id);
     });
 });
 
@@ -67,11 +75,42 @@ buttons.forEach((button) => {
 
 function displayScore(){
     let score = `Score: User ${win} - PC ${lose}`;
-    const scoreBoard = document.querySelector('#score');
     scoreBoard.textContent = score;
 }
 
 function displayResults(result){
-    const resultBoard = document.querySelector('#winner');
     resultBoard.textContent = result;
+}
+
+function Game(input){
+    if (win < 5 && lose < 5){
+        let result = playRound(input);
+        displayResults(result);
+        displayScore();
+    }
+}
+
+
+function showGameOver(){
+    const endStatment = document.createElement("h3");
+    if (win > lose){
+        endStatment.textContent = winStatment;
+        endStatment.style.color = '#52b788';
+    } else {
+        endStatment.textContent = loseStatment;
+        endStatment.style.color = 'red';
+    }
+    const playAgain = document.createElement("Button");
+    playAgain.innerText = 'Play Again?';
+    playAgain.classList.add('button-78');
+    playAgain.addEventListener('click',(e) => {
+        win = 0;
+        lose = 0;
+        resultBoard.textContent = 'Play Now!';
+        scoreBoard.textContent = '';
+        endDiv.removeChild(playAgain);
+        endDiv.removeChild(endStatment);
+    });
+    endDiv.appendChild(endStatment);
+    endDiv.appendChild(playAgain);
 }
